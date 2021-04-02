@@ -4,8 +4,18 @@ window.addEventListener("DOMContentLoaded", () => {
   let player = "X";
   let boardState = ["", "", "", "", "", "", "", "", ""];
   let count = 0;
+  const newGame = document.querySelectorAll('button')[0];
+  const giveUp = document.querySelectorAll('button')[1];
+  newGame.addEventListener('click', (event) => {
+    //event.target
+    console.log('Hello world')
 
-  board.addEventListener("click", (event) => {
+  })
+  newGame.disabled;
+
+
+
+  board.addEventListener("click", playerTurn = (event) => {
     const square = document.getElementById(event.target.id); // ask a TA "why *wouldn't* we just suse this every time?"
     if (!square.style.backgroundImage) {
       const squareID = square.id.slice(7);
@@ -40,7 +50,9 @@ window.addEventListener("DOMContentLoaded", () => {
       boardArray[0] !== ""
     ) {
       gameStatus.innerText = `Winner : ${boardArray[0]}`;
-      return;
+      board.removeEventListener('click', playerTurn);
+      // newGame.disabled = 'true';
+
     }
     if (
       boardArray[3] === boardArray[4] &&
@@ -48,7 +60,7 @@ window.addEventListener("DOMContentLoaded", () => {
       boardArray[3] !== ""
     ) {
       gameStatus.innerText = `Winner : ${boardArray[3]}`;
-      return;
+      board.removeEventListener('click', playerTurn);
     }
     if (
       boardArray[6] === boardArray[7] &&
@@ -56,7 +68,7 @@ window.addEventListener("DOMContentLoaded", () => {
       boardArray[6] !== ""
     ) {
       gameStatus.innerText = `Winner : ${boardArray[6]}`;
-      return;
+      board.removeEventListener('click', playerTurn);
     }
 
     //column
@@ -66,7 +78,7 @@ window.addEventListener("DOMContentLoaded", () => {
       boardArray[0] !== ""
     ) {
       gameStatus.innerText = `Winner : ${boardArray[0]}`;
-      return;
+      board.removeEventListener('click', playerTurn);
     }
     if (
       boardArray[1] === boardArray[4] &&
@@ -74,7 +86,7 @@ window.addEventListener("DOMContentLoaded", () => {
       boardArray[1] !== ""
     ) {
       gameStatus.innerText = `Winner : ${boardArray[1]}`;
-      return;
+      board.removeEventListener('click', playerTurn);
     }
     if (
       boardArray[2] === boardArray[5] &&
@@ -82,7 +94,7 @@ window.addEventListener("DOMContentLoaded", () => {
       boardArray[2] !== ""
     ) {
       gameStatus.innerText = `Winner : ${boardArray[2]}`;
-      return;
+      board.removeEventListener('click', playerTurn);
     }
 
     //diag
@@ -92,7 +104,7 @@ window.addEventListener("DOMContentLoaded", () => {
       boardArray[0] !== ""
     ) {
       gameStatus.innerText = `Winner : ${boardArray[0]}`;
-      return;
+      board.removeEventListener('click', playerTurn);
     }
     if (
       boardArray[2] === boardArray[4] &&
@@ -100,12 +112,13 @@ window.addEventListener("DOMContentLoaded", () => {
       boardArray[2] !== ""
     ) {
       gameStatus.innerText = `Winner : ${boardArray[2]}`;
-      return;
+      board.removeEventListener('click', playerTurn);
     }
     count++;
     // [ 0, 1, 2
     //   3, 4, 5,
     //   6 ,7, 8
     // ]
+
   };
 });
