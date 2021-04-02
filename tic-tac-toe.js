@@ -1,12 +1,26 @@
 window.addEventListener('DOMContentLoaded', () => {
 
   const board = document.getElementById('tic-tac-toe-board');
+  let player = 'X';
 
   board.addEventListener('click', event => {
-    console.log(1)
+
     const square = document.getElementById(event.target.id);
-    // square.style.backgroundColor = 'black';
-    square.style.backgroundImage = "src=player-x.svg";
+    if (!square.style.backgroundImage) {
+      if (player === 'X') {
+
+        square.style.backgroundImage = "url(images/player-x.svg)";
+        player = 'O';
+      } else if (player === 'O') {
+
+        square.style.backgroundImage = "url(images/player-o.svg)";
+        player = 'X';
+      }
+
+    }
+
+
+
   })
 
 })
